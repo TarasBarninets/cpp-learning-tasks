@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d77ebb61_161cf558",
+        "filename": "src/Constructors/Rectangle.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-10-16T22:11:53Z",
+      "side": 1,
+      "message": "add comment here that we makes deep copy",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 49
+      },
+      "revId": "efe25211abfe438fc9f759e5743b52909dd31447",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e32a6559_13139ec1",
+        "filename": "src/Constructors/Rectangle.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-10-16T22:11:53Z",
+      "side": 1,
+      "message": "add comment here that we makes deep copy",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "efe25211abfe438fc9f759e5743b52909dd31447",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
