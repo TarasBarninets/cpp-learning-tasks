@@ -14,5 +14,6 @@ public:
 	void accelerate() override;
 	void put_break() override;
 	void add_fuel(unsigned char value) override;
+	bool is_accaptable_for_usage() override;
 };
 

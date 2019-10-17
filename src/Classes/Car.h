@@ -21,6 +21,7 @@ public:
 	virtual void accelerate() = 0;
 	virtual void put_break() = 0;
 	virtual void add_fuel(unsigned char value) = 0;
+	virtual bool is_accaptable_for_usage() = 0;
 
 protected:
 	bool m_parking_break = true;

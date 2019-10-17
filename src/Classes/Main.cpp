@@ -7,7 +7,14 @@
 void test_drive(Car* ptr)
 {
 	// dynamic polymorphism is using here
-	if (ptr->start_engine())
+	bool usage = ptr->is_accaptable_for_usage();
+
+	if (usage)
+		std::cout << "Car can be using" << std::endl;
+	else
+		std::cout << "Car can't be using, POLUTION RATE OVER LIMIT" << std::endl;
+
+	if (usage && ptr->start_engine())
 	{
 		ptr->set_parking_break(false);
 		ptr->set_gear(1);
@@ -23,7 +30,7 @@ void test_drive(Car* ptr)
 
 int main()
 {
-	Renault* pRenault = new Renault(20);
+	Car* pRenault = new Renault(20);
 	test_drive(pRenault);
 	delete pRenault;
 	std::cout << std::endl;

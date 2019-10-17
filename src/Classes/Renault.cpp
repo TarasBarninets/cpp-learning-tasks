@@ -1,5 +1,9 @@
 #include "Renault.h"
+#include "CarConfig.h"
 #include <iostream>
+
+// add variable with static storage this means that variable is available only within this file
+static const unsigned short RENAULT_POLUTION_RATE = 25;
 
 Renault::Renault(unsigned char fuel_level) : Car(fuel_level)
 {
@@ -65,4 +69,9 @@ void Renault::add_fuel(unsigned char value)
 {
 	m_fuel_level += value;
 	std::cout << "Renault fuel added." << std::endl;
+}
+
+bool Renault::is_accaptable_for_usage()
+{
+	return RENAULT_POLUTION_RATE < MAX_POLLUTION_RATE;
 }
