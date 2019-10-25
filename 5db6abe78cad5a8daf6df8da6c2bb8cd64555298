@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "2feb3ad2_3b6e496f",
+        "filename": "src/MemoryManagment/Main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-10-25T20:28:41Z",
+      "side": 1,
+      "message": "also, add an example of casting simple numbers(POD types)\ne.g.\nfloat f;\nint iVar \u003d static_cast\u003cint\u003e(f);",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 15
+      },
+      "revId": "5db6abe78cad5a8daf6df8da6c2bb8cd64555298",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e49b18a_26e0775e",
+        "filename": "src/MemoryManagment/Main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-10-25T20:28:41Z",
+      "side": 1,
+      "message": "Also, add an example when we trying to do static_cast between classes from different hierarchy\nand get COMPILATION ERROR.",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 2
+      },
+      "revId": "5db6abe78cad5a8daf6df8da6c2bb8cd64555298",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89bf83b6_ce18dbee",
+        "filename": "src/MemoryManagment/Main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-10-25T20:28:41Z",
+      "side": 1,
+      "message": "unnessary space",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 6
+      },
+      "revId": "5db6abe78cad5a8daf6df8da6c2bb8cd64555298",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b03e3827_e84d56b3",
         "filename": "src/MemoryManagment/Main.cpp",
         "patchSetId": 1
