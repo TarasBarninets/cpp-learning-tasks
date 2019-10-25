@@ -45,6 +45,8 @@ public:
 	PtrVsRef(int& ref, int* ptr) : m_ref(ref), m_ptr(ptr) {}
 };
 
+class Base2{};
+
 class Base 
 {
 	virtual void print() { std::cout << "Base" << std::endl; }
@@ -125,7 +127,7 @@ int main()
 	// pointer vs reference
 	{
 		int x = 1, y = 2;
-		int& p = x;
+		int& p = x; // this reference will be resolved at the compile time, so we will not allocate memory for p referenc on stack
 		int* ptr = &x;
 		PtrVsRef object(x, &y);
 
@@ -148,16 +150,19 @@ int main()
 	}
 	std::cout << "-----------------------------------------" << std::endl;
 
-	// static_cast
+	// static_cast - resolve at compile time
 	{
-		Derived1 derivedObject;
-		Base* ptr1Base = (Base*)&derivedObject; 
-		Base* ptr2Base = static_cast<Base*>(&derivedObject); // upcasting
-		Derived1* ptr1Derived1 = static_cast<Derived1*>(ptr2Base); // downcasting
+		float f = 3.5;
+		int i = static_cast<int>(f);
+		Derived1 derivedObject; 
+		Base* ptr1Base = static_cast<Base*>(&derivedObject); // upcasting
+		Derived1* ptr1Derived1 = static_cast<Derived1*>(ptr1Base); // downcasting
 		void* vPtr = static_cast<void*>(ptr1Derived1); // converting to *void
 		Derived1* ptr2Derived1 = static_cast<Derived1*>(vPtr); // converting from void*
+		// Base2* ptr1Base2 = static_cast<Base2*>(ptr2Base); - cant make casting between classes from different hierarchy (Base and Base2)
+		// In such case - get COMPILATION ERROR.
 	}
-	// dynamic_cast
+	// dynamic_cast - use RTTI(embedded in Virtual table), so resolve at runtime
 	{
 		Derived1 objectDerived1;
 		Base* ptrBase = dynamic_cast<Base*>(&objectDerived1); // upcasting
@@ -170,7 +175,7 @@ int main()
 		{
 			std::cout << "Casting performed" << std::endl;
 		}
-		try 
+		try
 		{
 			Derived2& refDerived2 = dynamic_cast<Derived2&>(objectDerived1);
 		}
@@ -180,18 +185,21 @@ int main()
 		}
 	}
 
-	// const_cast
+	// const_cast - remove const from pointer and reference, can not change real const variable e.g. const int a = 7;
 	{
-		const int a = 7;
-		int* ptr = const_cast<int*>(&a);
+		int a = 7;
+		const int* ptr1 = &a;
+		int* ptr2 = const_cast<int*>(ptr1);
+		*ptr2 = 77; // changed value of a
 	}
 
-	// reinterpret_cast
+	// reinterpret_cast - do not change anything, just reinterpret bit as another type
 	{
 		int x = 1, y = 2;
 		PtrVsRef object(x, &y);
 		Resource1* ptr1 = new Resource1(1);
 		PtrVsRef* ptr2 = reinterpret_cast<PtrVsRef*>(ptr1);
+		PtrVsRef* ptr3 = reinterpret_cast<PtrVsRef*>(y);
 	}
 
 	return EXIT_SUCCESS;
