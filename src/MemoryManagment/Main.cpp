@@ -1,10 +1,12 @@
 #include <iostream>
+#include <execution>
 
 // forward declaration
-struct Resource2;
+class Resource2;
 
-struct Resource1
+class Resource1
 {
+public:
 	Resource1(size_t index) : m_index(index)
 	{
 		std::cout << "Default constructor of Resource1 class [" << m_index << "]" << std::endl;
@@ -19,8 +21,9 @@ struct Resource1
 	std::weak_ptr<Resource2> m_Resource2WeakPtr;
 };
 
-struct Resource2
+class Resource2
 {
+public:
 	Resource2(size_t index) : m_index(index)
 	{
 		std::cout << "Default constructor of Resource2 class [" << m_index << "]" << std::endl;
@@ -33,6 +36,30 @@ struct Resource2
 	size_t m_index;
 	std::shared_ptr<Resource1> m_Resource1Ptr;
 };
+
+class PtrVsRef
+{
+public:
+	int& m_ref;
+	int* m_ptr;
+	PtrVsRef(int& ref, int* ptr) : m_ref(ref), m_ptr(ptr) {}
+};
+
+class Base 
+{
+	virtual void print() { std::cout << "Base" << std::endl; }
+};
+
+class Derived1: public Base 
+{
+	void print() { std::cout << "Derived1" << std::endl; }
+};
+
+class Derived2 : public Base
+{
+	void print() { std::cout << "Derived2" << std::endl; }
+};
+
 
 int main()
 {
@@ -92,6 +119,79 @@ int main()
 		{
 			// use sharedPtrOnResource2 here
 		}
+	}
+	std::cout << "-----------------------------------------" << std::endl;
+
+	// pointer vs reference
+	{
+		int x = 1, y = 2;
+		int& p = x;
+		int* ptr = &x;
+		PtrVsRef object(x, &y);
+
+		std::cout << "adress of object m_ref = " << &object.m_ref << std::endl;
+		std::cout << "adress of object m_ptr = " << &object.m_ptr << std::endl;
+		std::cout << "adress of x = " << &x << std::endl;
+		std::cout << "adress of y = " << &y << std::endl;
+		std::cout << "sizeof Test = " << sizeof(PtrVsRef) << std::endl;
+		std::cout << "&p = " << &p << std::endl;
+
+		/*
+		cout result:
+			adress of object m_ref = 007CF710
+			adress of object m_ptr = 007CF6E0
+			adress of x = 007CF710
+			adress of y = 007CF704
+			sizeof Test = 8
+			&p = 007CF710
+		*/
+	}
+	std::cout << "-----------------------------------------" << std::endl;
+
+	// static_cast
+	{
+		Derived1 derivedObject;
+		Base* ptr1Base = (Base*)&derivedObject; 
+		Base* ptr2Base = static_cast<Base*>(&derivedObject); // upcasting
+		Derived1* ptr1Derived1 = static_cast<Derived1*>(ptr2Base); // downcasting
+		void* vPtr = static_cast<void*>(ptr1Derived1); // converting to *void
+		Derived1* ptr2Derived1 = static_cast<Derived1*>(vPtr); // converting from void*
+	}
+	// dynamic_cast
+	{
+		Derived1 objectDerived1;
+		Base* ptrBase = dynamic_cast<Base*>(&objectDerived1); // upcasting
+		Derived1* ptrDerived1 = dynamic_cast<Derived1*>(ptrBase); // downcasting
+		if (ptrDerived1 == nullptr)
+		{
+			std::cout << "Casting failed" << std::endl;
+		}
+		else
+		{
+			std::cout << "Casting performed" << std::endl;
+		}
+		try 
+		{
+			Derived2& refDerived2 = dynamic_cast<Derived2&>(objectDerived1);
+		}
+		catch (std::exception& e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+	}
+
+	// const_cast
+	{
+		const int a = 7;
+		int* ptr = const_cast<int*>(&a);
+	}
+
+	// reinterpret_cast
+	{
+		int x = 1, y = 2;
+		PtrVsRef object(x, &y);
+		Resource1* ptr1 = new Resource1(1);
+		PtrVsRef* ptr2 = reinterpret_cast<PtrVsRef*>(ptr1);
 	}
 
 	return EXIT_SUCCESS;
