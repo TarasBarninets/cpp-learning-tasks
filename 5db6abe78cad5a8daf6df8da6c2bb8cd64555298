@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b03e3827_e84d56b3",
+        "filename": "src/MemoryManagment/Main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-10-25T20:16:42Z",
+      "side": 1,
+      "message": "This is a bad way of using const_cast, because if someone changes value e.g. *ptr \u003d 12; it will produce undefined behavior.\nconst_cast do not remove const if ptr/reference points on const variable, it removes const only have pointer/reference on constant.\nE.g.\n\nint a \u003d 7;\nconst int* ptr_on_constant \u003d \u0026a;\n// *ptr_on_constanct \u003d 12; we can not change value here because ptr declared as pointer on constant\n// so const_cast help us here\nint* ptr \u003d const_cast\u003cint*\u003e(ptr_on_constant);\n*ptr \u003d 18; // now it is ok.\n\nBut, if int a \u003d 7 is really constant, e.g. const int a \u003d 7. Const_cast will not help and it will produce undefined behaviour.",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 186,
+        "endChar": 34
+      },
+      "revId": "5db6abe78cad5a8daf6df8da6c2bb8cd64555298",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
