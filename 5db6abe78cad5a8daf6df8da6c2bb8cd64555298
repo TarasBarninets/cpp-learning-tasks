@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "1402eeea_495487e8",
+        "filename": "src/MemoryManagment/Main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-10-25T20:40:39Z",
+      "side": 1,
+      "message": "this is c-style casting, it is not static_cast, so remove it from this example",
+      "range": {
+        "startLine": 154,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 42
+      },
+      "revId": "5db6abe78cad5a8daf6df8da6c2bb8cd64555298",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e49b18a_26e0775e",
         "filename": "src/MemoryManagment/Main.cpp",
         "patchSetId": 1
