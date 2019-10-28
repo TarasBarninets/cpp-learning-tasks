@@ -1,41 +1,7 @@
 #include <iostream>
 #include <execution>
-
-// forward declaration
-class Resource2;
-
-class Resource1
-{
-public:
-	Resource1(size_t index) : m_index(index)
-	{
-		std::cout << "Default constructor of Resource1 class [" << m_index << "]" << std::endl;
-	}
-	~Resource1()
-	{
-		std::cout << "Destructor of Resource1 class [" << m_index << "]" << std::endl;
-	}
-
-	size_t m_index;
-	std::shared_ptr<Resource2> m_Resource2Ptr;
-	std::weak_ptr<Resource2> m_Resource2WeakPtr;
-};
-
-class Resource2
-{
-public:
-	Resource2(size_t index) : m_index(index)
-	{
-		std::cout << "Default constructor of Resource2 class [" << m_index << "]" << std::endl;
-	}
-	~Resource2()
-	{
-		std::cout << "Destructor of Resource2 class [" << m_index << "]" << std::endl;
-	}
-
-	size_t m_index;
-	std::shared_ptr<Resource1> m_Resource1Ptr;
-};
+#include "Exceptions.h"
+#include "Resource.h"
 
 class PtrVsRef
 {
@@ -75,7 +41,7 @@ int main()
 		ptr2.reset(); // delete ptr2 resources, ptr2 = nullptr
 	}
 	std::cout << "-----------------------------------------" << std::endl;
-	
+
 	// test shared ptr
 	{
 		std::shared_ptr<Resource1> ptr1(new Resource1(3));
@@ -92,7 +58,7 @@ int main()
 	// test cross reference issue
 	{
 		std::shared_ptr<Resource1> ptr1(new Resource1(6));
-		std::shared_ptr<Resource2> ptr2 = std::make_shared<Resource2>(7); 
+		std::shared_ptr<Resource2> ptr2 = std::make_shared<Resource2>(7);
 
 		ptr1->m_Resource2Ptr = ptr2;
 		ptr2->m_Resource1Ptr = ptr1;
@@ -154,7 +120,7 @@ int main()
 	{
 		float f = 3.5;
 		int i = static_cast<int>(f);
-		Derived1 derivedObject; 
+		Derived1 derivedObject;
 		Base* ptr1Base = static_cast<Base*>(&derivedObject); // upcasting
 		Derived1* ptr1Derived1 = static_cast<Derived1*>(ptr1Base); // downcasting
 		void* vPtr = static_cast<void*>(ptr1Derived1); // converting to *void
@@ -200,6 +166,33 @@ int main()
 		Resource1* ptr1 = new Resource1(1);
 		PtrVsRef* ptr2 = reinterpret_cast<PtrVsRef*>(ptr1);
 		PtrVsRef* ptr3 = reinterpret_cast<PtrVsRef*>(y);
+	}
+	std::cout << "-----------------------------------------" << std::endl;
+
+
+	// exeptions - try, catch, throw
+	method1();
+
+	{
+		int x;
+		std::cout << "Enter number : " << std::endl;
+		std::cin >> x;
+
+		try
+		{
+			if (x < 0)
+				throw static_cast<bool>(x);
+			else
+				throw x;
+		}
+		catch(bool x)
+		{ 
+			std::cout << "Entered number less than zero!" << std::endl;
+		}
+		catch (int x)
+		{
+			std::cout << "Entered number more than zero!" << std::endl;
+		}
 	}
 
 	return EXIT_SUCCESS;
