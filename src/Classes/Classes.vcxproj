@@ -133,6 +133,8 @@
     <ClInclude Include="Car.h" />
     <ClInclude Include="CarConfig.h" />
     <ClInclude Include="Citroen.h" />
+    <ClInclude Include="Engine.h" />
+    <ClInclude Include="Mechanic.h" />
     <ClInclude Include="Peugeot.h" />
     <ClInclude Include="Renault.h" />
   </ItemGroup>

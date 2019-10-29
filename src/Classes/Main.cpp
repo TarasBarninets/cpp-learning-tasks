@@ -4,6 +4,9 @@
 #include "Peugeot.h"
 #include "Citroen.h"
 
+#include "Engine.h"
+#include "Mechanic.h"
+
 void test_drive(Car* ptr)
 {
 	// dynamic polymorphism is using here
@@ -14,18 +17,19 @@ void test_drive(Car* ptr)
 	else
 		std::cout << "Car can't be using, POLUTION RATE OVER LIMIT" << std::endl;
 
-	if (usage && ptr->start_engine())
-	{
-		ptr->set_parking_break(false);
-		ptr->set_gear(1);
-		ptr->accelerate();
-		ptr->set_gear(2);
-		ptr->accelerate();
-		ptr->put_break();
-		ptr->set_gear(1);
-		ptr->set_parking_break(true);
-		ptr->stop_engine();
-	}
+
+		if (usage && ptr->start_engine())
+		{
+			ptr->set_parking_break(false);
+			ptr->set_gear(1);
+			ptr->accelerate();
+			ptr->set_gear(2);
+			ptr->accelerate();
+			ptr->put_break();
+			ptr->set_gear(1);
+			ptr->set_parking_break(true);
+			ptr->stop_engine();
+		}
 }
 
 int main()
@@ -44,6 +48,12 @@ int main()
 	test_drive(pCitroen);
 	delete pCitroen;
 	std::cout << std::endl;
+
+	Engine* pEngine = new Engine(4, 2000, 2006, Diesel);
+	Mechanic object;
+	object.print_configuration(*pEngine);
+	print_configuration(*pEngine);
+	delete pEngine;
 
 	return EXIT_SUCCESS;
 }
