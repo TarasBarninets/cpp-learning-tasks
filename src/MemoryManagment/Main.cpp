@@ -174,10 +174,7 @@ int main()
 	method1();
 
 	{
-		int x;
-		std::cout << "Enter number : " << std::endl;
-		std::cin >> x;
-
+		int x = 3;
 		try
 		{
 			if (x < 0)
@@ -194,6 +191,16 @@ int main()
 			std::cout << "Entered number more than zero!" << std::endl;
 		}
 	}
+
+	try {
+		TestException obj1;
+	}
+	catch (std::exception& obj)
+	{
+		std::cout << obj.what();
+	}
+
+	std::cout << "End of program" << std::endl;
 
 	return EXIT_SUCCESS;
 }

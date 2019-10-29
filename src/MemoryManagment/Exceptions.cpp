@@ -32,3 +32,17 @@ void method3()
 	throw std::string("test value");
 	Logger obj7(7);
 }
+
+TestException::TestException() : m_logger1(1), m_logger2(2)
+{
+	std::cout << "Default constructor of class TestException" << std::endl;
+	throw std::runtime_error("Exception from TestException default constructor");
+}
+
+TestException::~TestException()
+{
+	std::cout << "Destructor of class TestException" << std::endl;
+
+	// It is prhoibited generated exception from Destructor
+	// throw std::runtime_error("exception from TestException destructor");
+}

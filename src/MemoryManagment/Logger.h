@@ -27,6 +27,7 @@ public:
 	{
 		m_index = right_side.m_index;
 		std::cout << "Assigment operator of class Logger " << m_index << std::endl;
+		return *this;
 	}
 
 	// destructor
