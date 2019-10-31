@@ -1,5 +1,17 @@
 #include <iostream>
 
+bool ret_true()
+{
+	std::cout << "true" << std::endl;
+	return true;
+}
+
+bool ret_false()
+{
+	std::cout << "false" << std::endl;
+	return false;
+}
+
 int main()
 {
 	int a, b;
@@ -27,12 +39,30 @@ int main()
 		break;
 	}
 
-	do
+	// logical operations
+	if (ret_true() && ret_true() && ret_true() || ret_false() && ret_true())
+		std::cout << "result true" << std::endl;
+	else
+		std::cout << "result false" << std::endl;
+
+	if (ret_false() && ret_true() && ret_true() && ret_true() && ret_true())
+		std::cout << "result true" << std::endl;
+	else
+		std::cout << "result false" << std::endl;
+
+	int* pCat = nullptr;
+	int* pDog = nullptr;
+
+	if (pCat && pDog)
 	{
-		std::cout << "Before continue" << std::endl;
-		continue; // jump to the begin of the next iteration
-		std::cout << "After continue" << std::endl;
-	} while (true);
+		// make some calls with pCat and pDog
+		// pCat->call()
+		// pDog->method2()
+	}
+	else
+	{
+		// pCat or pDog is an invalid pointer
+	}
 
 	return EXIT_SUCCESS;
 }
