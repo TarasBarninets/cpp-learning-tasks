@@ -28,9 +28,24 @@ class Derived2 : public Base
 	void print() { std::cout << "Derived2" << std::endl; }
 };
 
+void test_function()
+{
+	int k = 0; // on stack
+	static int i = 0; // globaly in data segment
+
+	k++;
+	i++;
+
+	std::cout << "k = " << k << std::endl;
+	std::cout << "i = " << i << std::endl;
+}
 
 int main()
 {
+	test_function(); // k = 0, i = 0
+	test_function(); // k = 0, i = 1
+	test_function(); // k = 0, i = 2
+
 	// test unique ptr
 	{
 		std::unique_ptr<Resource1> ptr1(new Resource1(1));
