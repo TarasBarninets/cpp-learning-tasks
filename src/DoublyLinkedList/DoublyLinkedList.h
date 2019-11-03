@@ -12,6 +12,9 @@ public:
 	Node* prev;
 };
 
+// example of recursion function
+void traversal_items_in_list(Node* ptr);
+
 class DoublyLinkedList {
 private:
 	size_t m_list_size;

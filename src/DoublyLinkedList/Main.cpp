@@ -8,6 +8,9 @@ int main()
 
 	for (int i = 0; i < 10; i++)
 		new_list.push_front(i);
+
+	traversal_items_in_list(new_list.get_list_head());
+
 	new_logger.print_all_values();
 
 	new_list.push_front(8);

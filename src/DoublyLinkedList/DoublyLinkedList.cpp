@@ -1,5 +1,15 @@
 #include "DoublyLinkedList.h"
 
+void traversal_items_in_list(Node* ptr)
+{
+	// Recursion fall
+	if (!ptr)
+		return; // Recursion exit
+	std::cout << ptr->data << std::endl;
+	traversal_items_in_list(ptr->next);
+	// Recursion rise
+}
+
 Node::Node(int value) : data(value),
 next(nullptr),
 prev(nullptr)
