@@ -1,6 +1,16 @@
 #include <iostream>
 #include "../MemoryManagment/Logger.h"
 
+// template function that has one template argument - T
+template<class T>
+T max(T t1, T t2)
+{
+	std::cout << "This is call template function max(), that has one template argument - T" << std::endl;
+	if (t1 > t2)
+		return t1;
+	return t2;
+}
+
 // template function with two input T1, T2 parameters
 template<typename T1, typename T2 = float>
 bool objectTypeComparison(const T1& objectT1, const T2& objectT2)
@@ -115,5 +125,10 @@ int main()
 	objectTypeComparison(integer_point, i);
 
 	Array<Logger, 10> customArray; // template instantiation
+
+	max(12, 24); // type deduction from input arguments --> int
+	// max(5, 7.5); compilation error, because can not deduct type
+	max<double>(12, 24.8); // explictly pass type into template <double>
+
 	return 0;
 }
