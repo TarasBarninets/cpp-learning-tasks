@@ -6,7 +6,7 @@ Point::Point() : m_x(0), m_y(0) // default constructor - without parameters () o
 	std::cout << "Called default constructor Point." << std::endl;
 }
 
-Point::Point(int x, int y) : m_x(x), m_y(x) // constructor with paramethers
+Point::Point(int x, int y) : m_x(x), m_y(y) // constructor with paramethers
 {
 	std::cout << "Called constructor with paramethers Point." << std::endl;
 }
@@ -52,3 +52,48 @@ void Point::setY(int y)
 {
 	m_y = y;
 }
+
+Point operator+(const Point &point1, const Point &point2)
+{
+	return Point(point1.m_x + point2.m_x, point1.m_y + point2.m_y);
+}
+
+std::ostream& operator<< (std::ostream& out, const Point& point)
+{
+	out << "Point(" << point.m_x << ", " << point.m_y << ")";
+	return out;
+}
+
+Point operator-(const Point& lhs_point, const Point& rhs_point)
+{
+	return Point(lhs_point.getX() - rhs_point.getX(), lhs_point.getY() - rhs_point.getY());
+}
+
+Point& Point::operator++()
+{
+	++m_x;
+	++m_y;
+	return *this;
+}
+
+Point& Point::operator--()
+{
+	--m_x;
+	--m_y;
+	return *this;
+}
+
+Point Point::operator++(int)
+{
+	Point temp(*this);
+	++(*this);
+	return temp;
+}
+
+Point Point::operator--(int)
+{
+	Point temp(*this);
+	--(*this);
+	return temp;
+}
+
