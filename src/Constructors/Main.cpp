@@ -2,6 +2,11 @@
 #include"Point.h"
 #include"Rectangle.h"
 
+void func(const Point& object)
+{
+	std::cout << object.getX();
+}
+
 int main()
 {
 	Point x; // default constructor
@@ -41,6 +46,11 @@ int main()
 	std::cout << q++ << std::endl;
 	std::cout << "Postfix --" << w << " = ";
 	std::cout << w-- << std::endl;
+
+	const Point constPoint(3, 3); // created constant object
+	constPoint.forceSetX(5); // posible to modify data of const object - because m_x, m_y - mutable
+	constPoint.forceSetY(7); // posible to modify data of const object - because m_x, m_y - mutable
+	// constPoint.setX(45); compilation error, can not call non const methods via const object
 
 	return EXIT_SUCCESS;
 }
