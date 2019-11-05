@@ -53,6 +53,16 @@ void Point::setY(int y)
 	m_y = y;
 }
 
+void Point::forceSetX(int x) const
+{
+	m_x = x;
+}
+
+void Point::forceSetY(int y) const
+{
+	m_y = y;
+}
+
 Point operator+(const Point &point1, const Point &point2)
 {
 	return Point(point1.m_x + point2.m_x, point1.m_y + point2.m_y);

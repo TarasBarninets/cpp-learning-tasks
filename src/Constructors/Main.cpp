@@ -42,5 +42,10 @@ int main()
 	std::cout << "Postfix --" << w << " = ";
 	std::cout << w-- << std::endl;
 
+	const Point constPoint(3, 3); // created constant object
+	constPoint.forceSetX(5); // posible to modify data of const object - because m_x, m_y - mutable
+	constPoint.forceSetY(7); // posible to modify data of const object - because m_x, m_y - mutable
+	// constPoint.setX(45); compilation error, can not call non const methods via const object
+
 	return EXIT_SUCCESS;
 }

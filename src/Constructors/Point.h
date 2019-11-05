@@ -21,8 +21,12 @@ public:
 	void setX(int x);
 	void setY(int y);
 
+	void forceSetX(int x) const; // test method to demonstrate how mutable works
+	void forceSetY(int y) const; // test method to demonstrate how mutable works
+
 private:
-	int m_x, m_y;
+	mutable int m_x; // mutable - allow a particular data member of const object to be modified
+	mutable int m_y; // mutable - allow a particular data member of const object to be modified
 };
 
 Point operator-(const Point& lhs_point, const Point& rhs_point); //overloaded operator - via function
