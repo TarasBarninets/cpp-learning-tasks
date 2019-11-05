@@ -28,7 +28,7 @@ class Derived2 : public Base
 	void print() { std::cout << "Derived2" << std::endl; }
 };
 
-void test_function()
+void testLocalStaticVariable()
 {
 	int k = 0; // on stack
 	static int i = 0; // globaly in data segment
@@ -40,11 +40,42 @@ void test_function()
 	std::cout << "i = " << i << std::endl;
 }
 
+Logger& invalidLoggerReturn()
+{
+	Logger object(1);
+	return object;
+}
+
+std::shared_ptr<Logger> validLoggerReturnSmarPotiner()
+{
+	std::shared_ptr<Logger> object(new Logger(2));
+
+	// NEW OBJECT HAS NOT BEEN CREATED, WE JUST CREATE A POINTER ON the object, so this is INVALID using of smart_pointers
+	std::shared_ptr<Logger>* object2 = &object; 
+
+	// smart pointer ALWAYS must be return/passed BY VALUE because only on COPY constructor or ASSIGNMENT operator which modify ref counter
+	return object;
+}
+
+Logger* validLoggerReturnRawPointer()
+{
+	Logger* ptr = new Logger(3);
+	return ptr;
+}
 int main()
 {
-	test_function(); // k = 0, i = 0
-	test_function(); // k = 0, i = 1
-	test_function(); // k = 0, i = 2
+	testLocalStaticVariable(); // k = 0, i = 0
+	testLocalStaticVariable(); // k = 0, i = 1
+	testLocalStaticVariable(); // k = 0, i = 2
+
+	Logger& object = invalidLoggerReturn();
+	std::cout << "Invalid function return object on stack, so we can not use this object" << std::endl;
+
+	std::shared_ptr<Logger> pLogger = validLoggerReturnSmarPotiner();
+	// pLogger ref coutner is equal 1
+
+	Logger* rawPtrLogger = validLoggerReturnRawPointer();
+	delete rawPtrLogger;
 
 	// test unique ptr
 	{
