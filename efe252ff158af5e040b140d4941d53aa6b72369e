@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2559aa2_eb8ef089",
+        "filename": "src/Constructors/Main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-11-05T22:11:28Z",
+      "side": 1,
+      "message": "remove this method",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 1
+      },
+      "revId": "efe252ff158af5e040b140d4941d53aa6b72369e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
