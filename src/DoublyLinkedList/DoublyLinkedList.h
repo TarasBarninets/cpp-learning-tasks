@@ -23,7 +23,7 @@ private:
 
 public:
 	DoublyLinkedList();
-	~DoublyLinkedList() = default;
+	~DoublyLinkedList();
 
 	void push_back(int data);
 	void pop_back();

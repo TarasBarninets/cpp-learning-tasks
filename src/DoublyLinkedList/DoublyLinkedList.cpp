@@ -16,6 +16,25 @@ prev(nullptr)
 {
 }
 
+DoublyLinkedList::DoublyLinkedList() : m_list_size(0),
+m_list_head(nullptr),
+m_list_tail(nullptr)
+{
+}
+
+DoublyLinkedList::~DoublyLinkedList()
+{
+	while (m_list_head != nullptr)
+	{
+		Node* temp_node = m_list_head;
+		std::cout << "DoublyLinkedList destructor for node " << temp_node->data << std::endl;
+		m_list_head = m_list_head->next;
+		--m_list_size;
+		delete temp_node;
+	}
+}
+
+
 void DoublyLinkedList::push_front(int data) {
 	std::cout << "Called push_front() : " << data << std::endl;
 	Node* new_node = new Node(data);
@@ -59,12 +78,6 @@ void DoublyLinkedList::pop_front() {
 		m_list_tail = nullptr;
 		std::cout << "Deleted last element. List is empty";
 	}
-}
-
-DoublyLinkedList::DoublyLinkedList() : m_list_size(0),
-	m_list_head(nullptr),
-	m_list_tail(nullptr)
-{
 }
 
 void DoublyLinkedList::push_back(int data)
