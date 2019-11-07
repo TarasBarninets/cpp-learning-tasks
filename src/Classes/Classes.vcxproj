@@ -126,6 +126,7 @@
     <ClCompile Include="CarConfig.cpp" />
     <ClCompile Include="Citroen.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MyFunctor.cpp" />
     <ClCompile Include="Peugeot.cpp" />
     <ClCompile Include="Renault.cpp" />
   </ItemGroup>
@@ -135,6 +136,7 @@
     <ClInclude Include="Citroen.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Mechanic.h" />
+    <ClInclude Include="MyFunctor.h" />
     <ClInclude Include="Peugeot.h" />
     <ClInclude Include="Renault.h" />
   </ItemGroup>
