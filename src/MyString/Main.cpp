@@ -1,10 +1,16 @@
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
 class MyString
 {
 public:
+	MyString()
+	{
+
+	}
+
 	MyString(const char* c_str)
 	{
 		std::cout << __FUNCSIG__ << std::endl;
@@ -38,6 +44,7 @@ public:
 	~MyString()
 	{
 		std::cout << __FUNCSIG__ << std::endl;
+
 		delete[] m_data;
 	}
 
@@ -47,6 +54,7 @@ public:
 		{
 			// 1. delete memory of old c-string
 			delete[] this->m_data;
+			this->m_data = nullptr;
 
 			// 2. allocate memory for new c-string for rhs
 			this->m_data = new char[rhs.m_size];
@@ -69,21 +77,114 @@ public:
 		return *(m_data + index);
 	}
 
-	size_t length()
+	size_t length() const
 	{
 		std::cout << __FUNCSIG__ << std::endl;
 		return m_size;
 	}
 
-	const char* c_str()
+	bool empty() const
+	{
+		std::cout << __FUNCSIG__ << std::endl;
+		return (m_size == 0);
+	}
+
+	void clear()
+	{
+		std::cout << __FUNCSIG__ << std::endl;
+		m_data[0] = '\0';
+		m_size = 0;
+	}
+
+	size_t find(const MyString& str) const
+	{
+		if (this->m_size < str.m_size)
+		{
+			return m_npos;
+		}
+
+		size_t substring_length = str.m_size - 1;
+
+		int i = 0, j = 0;
+		for ( ; (i < this->m_size - 1) && (j < substring_length); ++i)
+		{
+			if (m_data[i] == str.m_data[j])
+			{
+				++j;
+			}
+			else
+			{
+				j = 0;
+			}
+		}
+
+		if (substring_length == j)
+		{
+			return (i - substring_length);
+		}
+		else
+		{
+			return m_npos;
+		}
+	}
+
+	void swap(MyString& str)
+	{
+		std::cout << __FUNCSIG__ << std::endl;
+		if (this == &str)
+		{
+			return;
+		}
+
+		// std::swap(this->m_size, str.m_size);
+		size_t temp_size = this->m_size;
+		this->m_size = str.m_size;
+		str.m_size = temp_size;
+
+		// std::swap(this->m_data, str.m_data);
+		char* temp_data = this->m_data;
+		this->m_data = str.m_data;
+		str.m_data = temp_data;
+
+		/*if (m_size < str.m_size)
+		{
+			char* enough_str = new char[str.m_size];
+			memcpy(enough_str, this->m_data, this->m_size);
+			delete[] this->m_data;
+			this->m_data = enough_str;
+		}
+		else if (m_size > str.m_size)
+		{
+			char* enough_str = new char[this->m_size];
+			memcpy(enough_str, str.m_data, str.m_size);
+			delete[] str.m_data;
+			str.m_data = enough_str;
+		}
+
+		size_t size = std::max(str.m_size, this->m_size);
+
+		for (int i = 0; i < size; i++)
+		{
+			char temp_symbol = *(this->m_data + i);
+			*(this->m_data + i) = *(str.m_data + i);
+			*(str.m_data + i) = temp_symbol;
+		}
+
+		size_t temp_size = this->m_size;
+		this->m_size = str.m_size;
+		str.m_size = temp_size;*/
+	}
+
+	const char* c_str() const
 	{
 		std::cout << __FUNCSIG__ << std::endl;
 		return m_data;
 	}
 	
 private:
-	size_t m_size = 0;
 	char* m_data = nullptr;
+	size_t m_size = 0;
+	static const size_t m_npos = -1;
 };
 
 int main()
@@ -96,6 +197,32 @@ int main()
 		MyString object2("234234234"); // object2 - contains copy, object1 - MUST NOT BE MODIFED
 		object2 = "12348946516516516"; // heavy, because create MyString temp objects from const char *
 	}
+
+	MyString object3;
+	MyString object4 = "object4";
+
+	std::cout << object3.empty() << std::endl;
+	std::cout << object4.empty() << std::endl;
+
+	std::cout << object4.c_str() << std::endl;
+	object4.clear();
+
+	std::cout << object4.empty() << std::endl;
+
+	MyString object5("This is test string");
+	MyString object6("test");
+	MyString object7("object7");
+
+	size_t index = object5.find(object6);
+	std::cout << index << std::endl;
 	
+	std::cout << object6.c_str() << std::endl;
+	std::cout << object7.c_str() << std::endl;
+	object7.swap(object7);
+	object7.swap(object6);
+	std::cout << object6.c_str() << std::endl;
+	std::cout << object7.c_str() << std::endl;
+
+	 
 	return EXIT_SUCCESS;
 }
