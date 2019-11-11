@@ -77,6 +77,72 @@ public:
 		return *(m_data + index);
 	}
 
+	bool operator==(const MyString& rhs)
+	{
+		if (this->m_size != rhs.m_size)
+		{
+			std::cout << m_data << " != " << rhs.m_data << " ";
+			return false;
+		}
+
+		for (size_t i = 0; i < m_size; i++)
+		{
+			if ((m_data[i] ^ rhs.m_data[i]) == 0)
+				continue;
+			else
+				std::cout << m_data << " != " << rhs.m_data << " ";
+
+			return false;
+		}
+
+		std::cout << m_data << " == " << rhs.m_data << " ";
+		return true;
+	}
+
+	MyString operator+(const MyString& rhs)
+	{
+		MyString returnValue;
+		returnValue.m_size = m_size + rhs.m_size - 1;
+		returnValue.m_data = new char[returnValue.m_size];
+
+		for (size_t i = 0; i < m_size - 1; i++)
+		{
+			returnValue.m_data[i] = m_data[i];
+		}
+
+		for (size_t i = m_size - 1, j = 0; i < returnValue.m_size; i++, j++)
+		{
+			returnValue.m_data[i] = rhs.m_data[j];
+		}
+
+		return returnValue;
+	}
+
+	MyString& const operator+=(const MyString& rhs)
+	{
+		char* temp = new char[m_size + rhs.m_size - 1];
+		memcpy(temp, m_data, m_size - 1);
+		memcpy(temp + m_size - 1, rhs.m_data, rhs.m_size);
+
+		delete[] m_data;
+		m_data = temp;
+		m_size = m_size + rhs.m_size - 1;
+
+		/*char* temp_lhs = new char[m_size];
+		size_t temp_size = m_size;
+		memcpy(temp_lhs, m_data, m_size);
+		delete[] m_data;
+
+		this->m_size = this->m_size + rhs.m_size - 1;
+		this->m_data = new char[this->m_size];
+
+		memcpy(m_data, temp_lhs, temp_size - 1);
+		memcpy((m_data + (temp_size - 1)), rhs.m_data, rhs.m_size);
+		delete[] temp_lhs;*/
+
+		return *this;
+	}
+
 	size_t length() const
 	{
 		std::cout << __FUNCSIG__ << std::endl;
@@ -201,21 +267,25 @@ int main()
 	MyString object3;
 	MyString object4 = "object4";
 
+	// example of using empty() method
 	std::cout << object3.empty() << std::endl;
 	std::cout << object4.empty() << std::endl;
 
+	// example of using clear() method
 	std::cout << object4.c_str() << std::endl;
 	object4.clear();
-
 	std::cout << object4.empty() << std::endl;
 
-	MyString object5("This is test string");
+	object4 = "object4";
+	MyString object5("This is test string ");
 	MyString object6("test");
 	MyString object7("object7");
 
+	// example of using find() method
 	size_t index = object5.find(object6);
 	std::cout << index << std::endl;
-	
+
+	// example of using swap() method
 	std::cout << object6.c_str() << std::endl;
 	std::cout << object7.c_str() << std::endl;
 	object7.swap(object7);
@@ -223,6 +293,22 @@ int main()
 	std::cout << object6.c_str() << std::endl;
 	std::cout << object7.c_str() << std::endl;
 
-	 
+	// example of using overloaded operator==
+	MyString object8("test");
+	MyString object9("bbbbbbbbbbbbbbb");
+	std::cout << (object7 == object8) << std::endl;
+	std::cout << (object1 == object9) << std::endl;
+	std::cout << (object6 == object4) << std::endl;
+
+	// example of using overloaded operator+
+	MyString object10 = object8 + object9;
+	MyString object11 = object5 + object7;
+	std::cout << object10.c_str() << std::endl;
+	std::cout << object11.c_str() << std::endl;
+
+	// example of using overloaded operator+=
+	object8 += object9;
+	std::cout << object8.c_str() << std::endl;
+
 	return EXIT_SUCCESS;
 }
