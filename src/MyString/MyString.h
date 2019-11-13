@@ -3,15 +3,16 @@
 class MyString
 {
 public:
-
 	MyString();
 	MyString(const char* c_str);
 	MyString(const MyString& str);
 	~MyString();
 
 	MyString& operator=(const MyString& rhs);
+	MyString& operator=(const char* rhs);
 	char& operator[](size_t index) const;
 	bool operator==(const MyString& rhs) const;
+	bool operator!=(const MyString& rhs) const;
 	MyString operator+(const MyString& rhs) const;
 	MyString& operator+=(const MyString& rhs);
 

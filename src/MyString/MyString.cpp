@@ -3,7 +3,10 @@
 #include "MyString.h"
 
 
-MyString::MyString(){}
+MyString::MyString()
+{
+	std::cout << __FUNCSIG__ << std::endl;
+}
 
 MyString::MyString(const char* c_str)
 {
@@ -42,8 +45,22 @@ MyString::~MyString()
 	delete[] m_data;
 }
 
+MyString& MyString::operator=(const char* rhs)
+{
+	std::cout << __FUNCSIG__ << std::endl;
+	m_size = strlen(rhs) + 1;
+	delete[] m_data;
+	m_data = new char[m_size];
+
+	// make deep copy of c-string from literal to heap
+	memcpy(m_data, rhs, m_size);
+
+	return *this;
+}
+
 MyString& MyString::operator=(const MyString& rhs)
 {
+	std::cout << __FUNCSIG__ << std::endl;
 	if (this != &rhs) // 0. make sure that we do not assign to ourself, otherwise we will free memory incorrectly
 	{
 		// 1. delete memory of old c-string
@@ -93,8 +110,14 @@ bool MyString::operator==(const MyString& rhs) const
 	return true;
 }
 
+bool MyString::operator!=(const MyString& rhs) const
+{
+	return !(*this == rhs);
+}
+
 MyString MyString::operator+(const MyString& rhs) const
 {
+	std::cout << __FUNCSIG__ << std::endl;
 	MyString returnValue;
 	returnValue.m_size = m_size + rhs.m_size - 1;
 	returnValue.m_data = new char[returnValue.m_size];
@@ -114,6 +137,7 @@ MyString MyString::operator+(const MyString& rhs) const
 
 MyString& MyString::operator+=(const MyString& rhs)
 {
+	std::cout << __FUNCSIG__ << std::endl;
 	char* temp = new char[m_size + rhs.m_size - 1];
 	memcpy(temp, m_data, m_size - 1);
 	memcpy(temp + m_size - 1, rhs.m_data, rhs.m_size);
@@ -158,6 +182,7 @@ void MyString::clear()
 
 size_t MyString::find(const MyString& str) const
 {
+	std::cout << __FUNCSIG__ << std::endl;
 	if (this->m_size < str.m_size)
 	{
 		return m_npos;
