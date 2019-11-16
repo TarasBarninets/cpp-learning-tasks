@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<Bookstore atr="C/C++ books">
+   <book>
+      <title>C Programming Absolute Beginner's Guide</title>
+      <author>Greg Perry</author>
+      <year>2013</year>
+      <price>21</price>
+   </book>
+   <book>
+      <title>The C Programming Language</title>
+      <author>Brian W. Kernighan</author>
+      <year>2000</year>
+      <price>49</price>
+   </book>
+   <book>
+      <title>Learn C the Hard Way</title>
+      <author>Zed A. Shaw</author>
+      <year>2015</year>
+      <price>26</price>
+   </book>
+   <book>
+      <title>Head First C</title>
+      <author>David Griffiths</author>
+      <year>2012</year>
+      <price>45</price>
+   </book>
+   <book>
+      <title>C Programming: A Modern Approach</title>
+      <author>K. N. King</author>
+      <year>2000</year>
+      <price>55</price>
+   </book>
+   <book>
+      <title>C++ Primer</title>
+      <author>Stanley B. Lippman</author>
+      <year>2012</year>
+      <price>40</price>
+   </book>
+   <book>
+      <title>Effective Modern C++</title>
+      <author>Scott Meyers</author>
+      <year>2014</year>
+      <price>38</price>
+   </book>
+   <book>
+      <title>The C++ Programming Language</title>
+      <author>Bjarne Stroustrup</author>
+      <year>2013</year>
+      <price>52</price>
+   </book>
+   <book>
+      <title>Accelerated C++: Practical Programming by Example</title>
+      <author>Andrew Koenig </author>
+      <year>2000</year>
+      <price>32</price>
+   </book>
+   <book>
+      <title>Programming: Principles and Practice Using C++ (Developer's Library)</title>
+      <author>Bjarne Stroustrup</author>
+      <year>2008</year>
+      <price>18</price>
+   </book>
+</Bookstore>
