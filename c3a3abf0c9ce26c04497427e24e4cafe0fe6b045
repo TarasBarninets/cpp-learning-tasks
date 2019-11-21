@@ -1,0 +1,279 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d7629a9_bd30cc0f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-11-21T23:18:30Z",
+      "side": 1,
+      "message": "that downloads files via http protocol by using libcurl library...",
+      "range": {
+        "startLine": 7,
+        "startChar": 23,
+        "endLine": 7,
+        "endChar": 64
+      },
+      "revId": "c3a3abf0c9ce26c04497427e24e4cafe0fe6b045",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5725673_e52422ca",
+        "filename": "src/Threading/Main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-11-21T23:18:30Z",
+      "side": 1,
+      "message": "for external headers(that is not a part of project) use \u003ccurl/curl.h\u003e\nfor internal headers(that you write in the scope of project) use \"MyClass.h\"",
+      "range": {
+        "startLine": 8,
+        "startChar": 9,
+        "endLine": 8,
+        "endChar": 22
+      },
+      "revId": "c3a3abf0c9ce26c04497427e24e4cafe0fe6b045",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93e0a23c_4fa4b6ae",
+        "filename": "src/Threading/Main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-11-21T23:18:30Z",
+      "side": 1,
+      "message": "remove space after threads",
+      "range": {
+        "startLine": 14,
+        "startChar": 114,
+        "endLine": 14,
+        "endChar": 115
+      },
+      "revId": "c3a3abf0c9ce26c04497427e24e4cafe0fe6b045",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09ef2bcb_793b408b",
+        "filename": "src/Threading/Main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-11-21T23:18:30Z",
+      "side": 1,
+      "message": "chunkSize is not going to be changed, so make it const\nconst size_t chunkSize \u003d",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "c3a3abf0c9ce26c04497427e24e4cafe0fe6b045",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "259c73a6_c2846785",
+        "filename": "src/Threading/Main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-11-21T23:18:30Z",
+      "side": 1,
+      "message": "remove tab",
+      "revId": "c3a3abf0c9ce26c04497427e24e4cafe0fe6b045",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94e3a68e_8f545d84",
+        "filename": "src/Threading/Main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-11-21T23:18:30Z",
+      "side": 1,
+      "message": "remove tab",
+      "revId": "c3a3abf0c9ce26c04497427e24e4cafe0fe6b045",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc498db6_d19aad64",
+        "filename": "src/Threading/Main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-11-21T23:18:30Z",
+      "side": 1,
+      "message": "WriteToMemoryCallback it should be consistent with name WriteToFileCallback...\nWriteToSomething not WriteSomething....",
+      "range": {
+        "startLine": 57,
+        "startChar": 14,
+        "endLine": 57,
+        "endChar": 33
+      },
+      "revId": "c3a3abf0c9ce26c04497427e24e4cafe0fe6b045",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68c672ec_89cd50e6",
+        "filename": "src/Threading/Main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-11-21T23:18:30Z",
+      "side": 1,
+      "message": "make const size_t chunkSize",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 18
+      },
+      "revId": "c3a3abf0c9ce26c04497427e24e4cafe0fe6b045",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8e6c9b2_996f0298",
+        "filename": "src/Threading/Main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-11-21T23:18:30Z",
+      "side": 1,
+      "message": "it is better to use static_cast\u003cchar*\u003e than c-style cast (char*)",
+      "range": {
+        "startLine": 70,
+        "startChar": 15,
+        "endLine": 70,
+        "endChar": 22
+      },
+      "revId": "c3a3abf0c9ce26c04497427e24e4cafe0fe6b045",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88abb908_534421c3",
+        "filename": "src/Threading/Main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-11-21T23:18:30Z",
+      "side": 1,
+      "message": "Never commit ABSOULTE PATH on github, because this will not work on another machine, so instead use file.open(\"FileFromThread3.txt\", ios::out) and this file will be created at the execution....",
+      "range": {
+        "startLine": 119,
+        "startChar": 12,
+        "endLine": 119,
+        "endChar": 74
+      },
+      "revId": "c3a3abf0c9ce26c04497427e24e4cafe0fe6b045",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2844add_b9754799",
+        "filename": "src/Threading/Main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-11-21T23:18:30Z",
+      "side": 1,
+      "message": "remove tab",
+      "revId": "c3a3abf0c9ce26c04497427e24e4cafe0fe6b045",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "320fa816_4c273598",
+        "filename": "src/Threading/Main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-11-21T23:18:30Z",
+      "side": 1,
+      "message": "I think you may remove this code, because the main idea of Thread1 is save into Buffer, Thread2 and Thread3 save into file...",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 16
+      },
+      "revId": "c3a3abf0c9ce26c04497427e24e4cafe0fe6b045",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d40c2a3_a59d6a1f",
+        "filename": "src/Threading/Main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1017119
+      },
+      "writtenOn": "2019-11-21T23:18:30Z",
+      "side": 1,
+      "message": "remove tab",
+      "revId": "c3a3abf0c9ce26c04497427e24e4cafe0fe6b045",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
