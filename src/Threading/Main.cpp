@@ -1,3 +1,9 @@
+// Used next cmake commands for bulding CURL VS solution (for create Libcurl static lib) :
+// For x86 : cmake CMakeLists.txt -B "../libcurl_win32/" -G "Visual Studio 16 2019" -A Win32 -D BUILD_SHARED_LIBS=NO -D CMAKE_USE_WINSSL=ON
+// -D BUILD_SHARED_LIBS=NO - specified build configuration type - Static lib, -D CMAKE_USE_WINSSL=ON - lib will use WINSSL - required for HTTPS protocol
+// For x64 : cmake CMakeLists.txt -B "../libcurl_win64/" -G "Visual Studio 16 2019" -D BUILD_SHARED_LIBS=NO -D CMAKE_USE_WINSSL=ON
+// Included aditional libraries : Normaliz.lib, Ws2_32.lib, Wldap32.lib, Crypt32.lib, advapi32.lib
+
 #define CURL_STATICLIB
 
 #include <iostream>
@@ -47,7 +53,7 @@ void SaveToFileUsingOfstream(const char* url, ofstream* file)
 
 	curl_easy_setopt(httpHandle, CURLOPT_WRITEFUNCTION, WriteToFileCallback); // Passing the function pointer to LC
 	curl_easy_setopt(httpHandle, CURLOPT_WRITEDATA, file); // Passing our BufferStruct to LC
-	curl_easy_setopt(httpHandle, CURLOPT_URL, url); // Set URL http://placebeard.it/640/480, https://www.w3.org/TR/PNG/iso_8859-1.txt
+	curl_easy_setopt(httpHandle, CURLOPT_URL, url); // Set URL http://placebeard.it/640/480 https://www.w3.org/TR/PNG/iso_8859-1.txt https://norvig.com/big.txt
 
 	CURLcode result = curl_easy_perform(httpHandle); // execute out HTTP request, blocking function
 	curl_easy_cleanup(httpHandle); // End a libcurl easy handle
@@ -84,7 +90,7 @@ void SaveInBuffer(char* url, BufferStruct* output)
 
 	curl_easy_setopt(httpHandle, CURLOPT_WRITEFUNCTION, WriteToMemoryCallback); // Passing the function pointer to LC
 	curl_easy_setopt(httpHandle, CURLOPT_WRITEDATA, output); // Passing our BufferStruct to LC
-	curl_easy_setopt(httpHandle, CURLOPT_URL, url); // Set URL http://placebeard.it/640/480, https://www.w3.org/TR/PNG/iso_8859-1.txt
+	curl_easy_setopt(httpHandle, CURLOPT_URL, url); // Set URL http://placebeard.it/640/480 https://www.w3.org/TR/PNG/iso_8859-1.txt https://norvig.com/big.txt
 
 	CURLcode result = curl_easy_perform(httpHandle); // execute out HTTP request, blocking function
 	curl_easy_cleanup(httpHandle); // End a libcurl easy handle
@@ -113,7 +119,7 @@ int main(int argc, char** argv)
 	BufferStruct output;
 
 	thread Thread1(SaveInBuffer, argv[1], &output);
-	thread Thread2(SaveToFileUsingCFile, argv[2], argv[3]);
+	thread Thread2(SaveToFileUsingCFile, argv[1], argv[3]);
 
 	ofstream file;
 	file.open("FileFromThread3.txt", ios::out | ios::app); // ios::out | ios::app - will write from end of file. If file have some text, new text will write after
@@ -132,7 +138,6 @@ int main(int argc, char** argv)
 
 	free(output.buffer);
 
-	cout << "argv[0] = " << argv[0] << endl;
 	cout << "argv[1] = " << argv[1] << endl;
 	cout << "argv[2] = " << argv[2] << endl;
 	cout << "argv[3] = " << argv[3] << endl;
